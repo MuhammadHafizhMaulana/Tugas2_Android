@@ -8,6 +8,7 @@ class SumNumbersScreen extends StatefulWidget {
 class _SumNumbersScreenState extends State<SumNumbersScreen> {
   TextEditingController numbersController = TextEditingController();
   String result = "0";
+  String lengthResult = "0";
 
   void calculateSum() {
     List<String> numbers = numbersController.text.split(" ");
@@ -19,6 +20,7 @@ class _SumNumbersScreenState extends State<SumNumbersScreen> {
     
     setState(() {
       result = sum % 1 == 0 ? sum.toInt().toString() : sum.toStringAsFixed(2);
+      lengthResult = numbersController.text.replaceAll(" ", "").length.toString();
     });
   }
 
@@ -44,6 +46,10 @@ class _SumNumbersScreenState extends State<SumNumbersScreen> {
             SizedBox(height: 20),
             Text(
               'Total: $result',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),SizedBox(height: 10),
+            Text(
+              'Panjang Karakter: $lengthResult',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ],
